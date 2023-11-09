@@ -1,7 +1,0 @@
-#insert into User(name, lastName, age) values('Pavel', 'Brosin', 25);
-#insert into User(name, lastName, age) values('Polina', 'Brosina', 20);
-#insert into User(name, lastName, age) values('Dmitriy', 'Brosin', 49);
-#insert into User(name, lastName, age) values('Olga', 'Brosina', 47);
-insert into User(name, lastName, age) values('Vassiliy', 'Brosin', 12);
-select * from User;
-#delete from User;
