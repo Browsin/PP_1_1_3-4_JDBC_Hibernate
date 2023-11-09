@@ -9,24 +9,24 @@ import java.util.List;
 
 public class UserDaoJDBCImpl implements UserDao {
 
+    String createTableQuery = "create table User(" +//todo: правильное наименование по codeStyle и вынос переменой, + IF NOT EXISTS
+            "id bigint primary key not null auto_increment," +
+            " name varchar(45) not null, lastName varchar(45) not null," +
+            " age tinyint not null)";
 
+    Connection connection;
 
+    public UserDaoJDBCImpl() {
+        if(connection == null) connection = Util.connect();//todo: заносим в класс Connection connection и имитируем singleton
+    }
 
     public void createUsersTable() {
-        String createTable = "create table User(" +
-                "id bigint primary key not null auto_increment," +
-                " name varchar(45) not null, lastName varchar(45) not null," +
-                " age tinyint not null)";
-        try (Connection connection = Util.connect();
-             Statement statement = connection.createStatement()) {
-
-            statement.execute(createTable);
-            System.out.println("Таблица создана");
-
+        try (Statement statement = connection.createStatement()) {
+            statement.execute(createTableQuery);
+//            System.out.println("Таблица создана");//todo: логи - перемещаем на слой service
         } catch (SQLException e) {
             System.out.println("не получилось создать таблицу");
         }
-
     }
 
     public void dropUsersTable() {

@@ -6,15 +6,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Util {
-    // реализуйте настройку соеденения с БД
-    private static final String URL = "jdbc:mysql://localhost:3306/mydbtest";
+
+    private static final String URL = "jdbc:mysql://localhost:3306/mydbtest";//todo: комментарии - излишни
     private static final String USERNAME = "root";
     private static final String PASSWORD = "my179sql";
 
-    public static Connection connect() throws SQLException{
-        Connection connection = null;
-
-        connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+    public Connection connect() {//todo: ошибка не пробрасывается, от static избавляемся - не ломаем ООП-парадигму
+        Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
         if(!connection.isClosed()) {
             System.out.println("соединение установлено");
         } else {
@@ -22,5 +20,4 @@ public class Util {
         }
         return connection;
     }
-
 }

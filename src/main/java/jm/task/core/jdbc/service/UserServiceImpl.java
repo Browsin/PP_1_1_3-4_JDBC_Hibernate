@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
+
     UserDaoJDBCImpl userDaoJDBC = new UserDaoJDBCImpl();
 
     public void createUsersTable() {
