@@ -13,12 +13,12 @@ public class UserDaoJDBCImpl implements UserDao {
             + "id BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT, "
             + "name VARCHAR(45) NOT NULL , lastName VARCHAR(45) NOT NULL , "
             + "age TINYINT NOT NULL)";
-    private static final String DROP_TABLE_QUERY = "DROP TABLE IF EXISTS User";
     private static final String INSERT_INTO = "INSERT INTO User("
             + "name, lastName, age) VALUES (?, ?, ?)";
     private static final String DELETE_FROM = "DELETE FROM User WHERE id = ";
     private static final String SELECT_FROM = "SELECT * FROM User";
     private static final String DELETE_FROM_ALL = "DELETE FROM User";
+    private static final String DROP_TABLE_QUERY = "DROP TABLE IF EXISTS User";
     private Connection connection;
     private Util util = new Util();
 

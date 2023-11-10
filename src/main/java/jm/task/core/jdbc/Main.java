@@ -4,7 +4,7 @@ import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.service.UserServiceImpl;
 
 public class Main {
-    public static void main(String[] args) {//todo: sintax, codeStyle
+    public static void main(String[] args) {
         UserServiceImpl userService = new UserServiceImpl();
 
         userService.createUsersTable();
