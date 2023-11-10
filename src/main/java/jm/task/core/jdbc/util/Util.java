@@ -6,18 +6,18 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Util {
-
-    private static final String URL = "jdbc:mysql://localhost:3306/mydbtest";//todo: комментарии - излишни
+    private static final String URL = "jdbc:mysql://localhost:3306/DBase"; // не понимаю, что тут не так
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "my179sql";
+    private static final String PASSWORD = "Browsin98"; //"my179sql";
 
-    public Connection connect() {//todo: ошибка не пробрасывается, от static избавляемся - не ломаем ООП-парадигму
-        Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-        if(!connection.isClosed()) {
-            System.out.println("соединение установлено");
-        } else {
-            System.out.println("ошибка установки соединения");
+    public Connection connect() {
+        try {
+            Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            System.out.println("Соединение установлено");
+            return connection;
+        } catch (SQLException e) {
+            System.out.println("Ошибка установки соединения");
         }
-        return connection;
+        return null;
     }
 }
