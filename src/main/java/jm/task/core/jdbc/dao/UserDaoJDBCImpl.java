@@ -16,12 +16,13 @@ public class UserDaoJDBCImpl implements UserDao {
             + "name, lastName, age) VALUES (?, ?, ?)";
     private static final String DELETE_FROM = "DELETE FROM User WHERE id = ";
     private static final String SELECT_FROM = "SELECT * FROM User";
-    private static final String DELETE_ALL = "DELETE FROM User";
+    private static final String CLEAN_TABLE_QUERY = "DELETE FROM User";
     private static final String DROP_TABLE_QUERY = "DROP TABLE IF EXISTS User";
     private Connection connection;
-    private Util util = new Util();
+
 
     public UserDaoJDBCImpl() {
+        final Util util = new Util();
         if (connection == null) connection = util.connect();
     }
 
@@ -80,7 +81,7 @@ public class UserDaoJDBCImpl implements UserDao {
 
     public void cleanUsersTable() {
         try (Statement statement = connection.createStatement()) {
-            statement.execute(DELETE_ALL);
+            statement.execute(CLEAN_TABLE_QUERY);
         } catch (SQLException e) {
             System.out.println("Не получилось очистить таблицу");
         }
