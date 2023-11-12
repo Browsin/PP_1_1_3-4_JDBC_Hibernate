@@ -30,7 +30,8 @@ public class UserDaoJDBCImpl implements UserDao {
         try (Statement statement = connection.createStatement()) {
             statement.execute(CREATE_TABLE_QUERY);
         } catch (SQLException e) {
-            System.out.println("Не получилось создать таблицу");
+            throw new IllegalStateException("Не получилось создать таблицу: " + e.getMessage());
+//            System.out.println("Не получилось создать таблицу");//todo: лог уже не нужен - мы здесь упали и выводим причину падения
         }
     }
 
