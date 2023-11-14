@@ -3,38 +3,40 @@ package jm.task.core.jdbc.service;
 import jm.task.core.jdbc.dao.UserDaoJDBCImpl;
 import jm.task.core.jdbc.model.User;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class UserServiceImpl implements UserService {
 
-    UserDaoJDBCImpl userDaoJDBC = new UserDaoJDBCImpl();
+//    UserDaoJDBCImpl userDaoJDBC = new UserDaoJDBCImpl();
+    Logger logger = Logger.getLogger(UserServiceImpl.class.getName());
 
     public void createUsersTable() {
-        userDaoJDBC.createUsersTable();
-        System.out.println("Таблица создана");
+//        userDaoJDBC.createUsersTable();
+        logger.info("Таблица создана");
     }
 
     public void dropUsersTable() {
-        userDaoJDBC.dropUsersTable();
-        System.out.println("Таблица удалена");
+//        userDaoJDBC.dropUsersTable();
+        logger.info("Таблица удалена");
     }
 
     public void saveUser(String name, String lastName, byte age) {
-        userDaoJDBC.saveUser(name, lastName, age);
-        System.out.println("User с именем – " + name + " добавлен в базу данных");
+//        userDaoJDBC.saveUser(name, lastName, age);
+        logger.info("User с именем – " + name + " добавлен в базу данных");
     }
 
     public void removeUserById(long id) {
-        userDaoJDBC.removeUserById(id);
-        System.out.println("удалил пользователя с id = " + id);
+//        userDaoJDBC.removeUserById(id);
+        logger.info("удалил пользователя с id = " + id);
     }
 
     public List<User> getAllUsers() {
-        System.out.println("Все пользователи в листе");
-        return userDaoJDBC.getAllUsers();
+        logger.info("Все пользователи в листе");
+        return null; //userDaoJDBC.getAllUsers();
     }
 
     public void cleanUsersTable() {
-        userDaoJDBC.cleanUsersTable();
-        System.out.println("Очистил таблицу");
+//        userDaoJDBC.cleanUsersTable();
+        logger.info("Очистил таблицу");
     }
 }

@@ -31,7 +31,6 @@ public class UserDaoJDBCImpl implements UserDao {
             statement.execute(CREATE_TABLE_QUERY);
         } catch (SQLException e) {
             throw new IllegalStateException("Не получилось создать таблицу: " + e.getMessage());
-//            System.out.println("Не получилось создать таблицу");//todo: лог уже не нужен - мы здесь упали и выводим причину падения
         }
     }
 
@@ -39,7 +38,7 @@ public class UserDaoJDBCImpl implements UserDao {
         try (Statement statement = connection.createStatement()) {
             statement.execute(DROP_TABLE_QUERY);
         } catch (SQLException e) {
-            System.out.println("Не получилось удалить таблицу");
+            throw new IllegalStateException("Не получилось удалить таблицу: " + e.getMessage());
         }
     }
 
@@ -50,7 +49,7 @@ public class UserDaoJDBCImpl implements UserDao {
             preparedStatement.setByte(3, age);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("Ошибка добаления пользователя");
+            throw new IllegalStateException("Ошибка добаления пользователя: " + e.getMessage());
         }
     }
 
@@ -58,7 +57,7 @@ public class UserDaoJDBCImpl implements UserDao {
         try (Statement statement = connection.createStatement()) {
             statement.execute(DELETE_FROM + id);
         } catch (SQLException e) {
-            System.out.println("Не получилось удалить пользователя");
+            throw new IllegalStateException("Не получилось удалить пользователя: " + e.getMessage());
         }
     }
 
@@ -75,7 +74,7 @@ public class UserDaoJDBCImpl implements UserDao {
                 userList.add(user);
             }
         } catch (SQLException e) {
-            System.out.println("Не получилось создать лист пользователей");
+            throw new IllegalStateException("Не получилось создать лист пользователей: " + e.getMessage());
         }
         return userList;
     }
@@ -84,7 +83,7 @@ public class UserDaoJDBCImpl implements UserDao {
         try (Statement statement = connection.createStatement()) {
             statement.execute(CLEAN_TABLE_QUERY);
         } catch (SQLException e) {
-            System.out.println("Не получилось очистить таблицу");
+            throw new IllegalStateException("Не получилось очистить таблицу: " + e.getMessage());
         }
     }
 }
