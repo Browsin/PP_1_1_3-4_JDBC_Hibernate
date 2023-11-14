@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Util {
-    private static final String URL = "jdbc:mysql://localhost:3306/DBase"; // не понимаю, что тут не так
+    private static final String URL = "jdbc:mysql://localhost:3306/DBase";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "my179sql"; //"my179sql";
 
@@ -15,8 +15,7 @@ public class Util {
             System.out.println("Соединение установлено");
             return connection;
         } catch (SQLException e) {
-            System.out.println("Ошибка установки соединения");
+            throw new IllegalStateException("Ошибка установки соединения: " + e.getMessage());
         }
-        return null;
     }
 }
