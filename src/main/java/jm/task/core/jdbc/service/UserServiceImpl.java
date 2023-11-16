@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.logging.Logger;
 
 public class UserServiceImpl implements UserService {
-    UserDaoHibernateImpl userDaoHibernate = new UserDaoHibernateImpl();
-    Logger logger = Logger.getLogger(UserServiceImpl.class.getName());
+    private UserDaoHibernateImpl userDaoHibernate = new UserDaoHibernateImpl();
+    private Logger logger = Logger.getLogger(UserServiceImpl.class.getName());
 
     public void createUsersTable() {
         userDaoHibernate.createUsersTable();
