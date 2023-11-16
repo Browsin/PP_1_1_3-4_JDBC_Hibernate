@@ -74,7 +74,7 @@ public class UserDaoJDBCImpl implements UserDao {
                 userList.add(user);
             }
         } catch (SQLException e) {
-            throw new IllegalStateException("Не получилось создать лист пользователей: " + e.getMessage());
+            throw new IllegalStateException("Ошибка создания листа пользователей: " + e.getMessage());
         }
         return userList;
     }
@@ -83,7 +83,7 @@ public class UserDaoJDBCImpl implements UserDao {
         try (Statement statement = connection.createStatement()) {
             statement.execute(CLEAN_TABLE_QUERY);
         } catch (SQLException e) {
-            throw new IllegalStateException("Не получилось очистить таблицу: " + e.getMessage());
+            throw new IllegalStateException("Ошибка очиститки таблицы: " + e.getMessage());
         }
     }
 }
